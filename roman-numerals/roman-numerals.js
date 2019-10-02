@@ -20,14 +20,15 @@ export const toRoman = (num) => {
 
   for (let num of Object.keys(ROMAN_NUMERALS).reverse().map(n => Number(n))) {
 
-    let occurence = Math.floor(number / num)
+    let occurrence = Math.floor(number / num)
 
-    if (occurence >= 1) {
-      for (let i = 0; i < occurence; i++) {
-        romanNumerals += ROMAN_NUMERALS[num]
-      }
+    if (occurrence < 1) {
+      continue;
     }
 
+    for (let i = 0; i < occurrence; i++) {
+      romanNumerals += ROMAN_NUMERALS[num]
+    }
     number = number % num;
   }
 
