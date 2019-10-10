@@ -1,12 +1,10 @@
 export const convert = (digits, sourceBase, targetBase) => {
-  if (sourceBase === undefined
-      || !Number.isInteger(sourceBase)
+  if (!Number.isInteger(sourceBase)
       || sourceBase <= 1) {
     throw new Error('Wrong input base');
   }
 
-  if (targetBase === undefined
-      || !Number.isInteger(targetBase)
+  if (!Number.isInteger(targetBase)
       || targetBase <= 1) {
     throw new Error('Wrong output base');
   }
@@ -27,11 +25,9 @@ export const convert = (digits, sourceBase, targetBase) => {
 
   const decimalDigits = toDecimal(digits, sourceBase);
 
-  if (targetBase === 10) {
-    return decimalDigits;
-  }
-
-  return fromDecimal(decimalDigits, targetBase);
+  return targetBase === 10
+          ? decimalDigits
+          : fromDecimal(decimalDigits, targetBase);
 };
 
 function toDecimal(digits, base) {
