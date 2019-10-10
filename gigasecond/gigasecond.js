@@ -1,3 +1,4 @@
 export const gigasecond = (date) => {
-	return new Date(date.getTime() + 10 ** 12);
+  const GIGASEC_IN_MS = 1e12;
+	return new Date(date.getTime() + GIGASEC_IN_MS);
 };
