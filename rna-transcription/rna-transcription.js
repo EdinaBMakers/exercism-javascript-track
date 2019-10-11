@@ -6,7 +6,6 @@ const NUC_COMPLEMENTS =  {
 }
 
 export const toRna = (dna) => {
-  return dna.split('')
-            .map(nucleotid => NUC_COMPLEMENTS[nucleotid])
-            .join('');
+  return [...dna].map(nucleotid => NUC_COMPLEMENTS[nucleotid])
+                 .join('');
 };
