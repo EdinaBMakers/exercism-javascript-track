@@ -1,17 +1,11 @@
-const ALPHABET = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z'];
+const ALPHABET = [...'abcdefghijklmnopqrstuvwxyz'];
 
 export const isPangram = (str) => {
   if (str.length < ALPHABET.length) {
     return false;
   }
 
-  const lowercaseStr = str.toLowerCase();
+  const uniqueLCaseLetters = [...new Set(str.toLowerCase().match(/[a-z]/g))];
 
-  for (let letter of ALPHABET) {
-    if (!lowercaseStr.includes(letter)) {
-      return false;
-    }
-  }
-
-  return true;
+  return uniqueLCaseLetters.length === ALPHABET.length;
 };
