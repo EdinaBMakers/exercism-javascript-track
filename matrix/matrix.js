@@ -5,7 +5,7 @@ export class Matrix {
 
   get rows() {
     const rowStr = this.str.split('\n')
-    return rowStr.map(row => row.split(' ').map(num => Number(num)));
+    return rowStr.map(row => row.split(' ').map(Number));
   }
 
   get columns() {
