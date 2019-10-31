@@ -1,22 +1,21 @@
 export class Series {
   constructor(digitsSrt) {
-    this.digitsSrt = digitsSrt;
+    this.digitsArr = [...digitsSrt].map(Number);
   }
 
   get digits() {
-    return this.digitsSrt.split('').map(Number);
+    return this.digitsArr;
   }
 
   slices(sliceLength) {
-    if (sliceLength > this.digitsSrt.length) {
+    if (sliceLength > this.digits.length) {
       throw 'Slice size is too big.';
     }
 
     const slices = [];
-    const digits = this.digits;
-    
-    for (let i = 0; i <= this.digitsSrt.length - sliceLength; i++) {
-      slices.push(digits.slice(i, i + sliceLength))
+
+    for (let i = 0; i <= this.digits.length - sliceLength; i++) {
+      slices.push(this.digits.slice(i, i + sliceLength))
     }
 
     return slices;
