@@ -7,9 +7,11 @@ export const classify = (number) => {
   if (isPerfect(number, sumOfFactors)) {
     return 'perfect';
   }
+
   if (isAbundant(number, sumOfFactors)) {
     return 'abundant';
   }
+
   if (isDeficient(number, sumOfFactors)) {
     return 'deficient';
   }
@@ -24,9 +26,12 @@ function validate(number) {
 function getFactors(number) {
   let factors = [];
 
-  for (let n = 1; n <= number / 2; n++) {
+  for (let n = 1; n <= Math.floor(Math.sqrt(number)); n++) {
     if (number % n === 0) {
       factors.push(n);
+      if (n > 1 && number / n !== n) {
+        factors.push(number / n);
+      }
     }
   }
 
@@ -34,7 +39,7 @@ function getFactors(number) {
 }
 
 function isPerfect(number, sumOfFactors) {
-  return sumOfFactors === number
+  return sumOfFactors === number && number !== 1;
 }
 
 function isAbundant(number, sumOfFactors) {
@@ -42,5 +47,5 @@ function isAbundant(number, sumOfFactors) {
 }
 
 function isDeficient(number, sumOfFactors) {
-  return sumOfFactors < number
+  return sumOfFactors < number || number === 1
 }
