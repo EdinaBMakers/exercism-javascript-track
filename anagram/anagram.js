@@ -8,7 +8,11 @@ export class Anagram {
       let lowerCaseCandidate = candidate.toLowerCase();
 
       return (lowerCaseCandidate !== this.lowerCaseWord
-             && lowerCaseCandidate.split('').sort().join('') === this.lowerCaseWord.split('').sort().join(''));
+             && this.alphabetize(lowerCaseCandidate) === this.alphabetize(this.lowerCaseWord));
     });
+  }
+
+  alphabetize(word) {
+    return word.split('').sort().join('');
   }
 }
