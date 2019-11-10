@@ -8,7 +8,6 @@ export class BeerSong {
   }
 
   static sing(numOfBeerAtTheBeginning = 99, numOfBeerAtTheEnd = 0) {
-    let numOfBeer = numOfBeerAtTheBeginning;
     let songLines = ''
 
     for (let numOfBeer = numOfBeerAtTheBeginning; numOfBeer >= numOfBeerAtTheEnd; numOfBeer--) {
