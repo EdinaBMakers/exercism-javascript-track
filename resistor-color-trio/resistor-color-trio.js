@@ -6,7 +6,17 @@ export class ResistorColorTrio {
   }
 
   get label() {
+    this._validate()
+
     return `Resistor value: ${this._valueWithUnit()}`;
+  }
+
+  _validate() {
+    this.colors.forEach(color => {
+      if (!COLORS.includes(color)) {
+        throw 'invalid color';
+      }
+    });
   }
 
   _valueWithUnit() {
