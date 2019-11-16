@@ -1,6 +1,7 @@
 export class Triangle {
   constructor(numOfRows) {
     this.numOfRows = numOfRows;
+    this.pascalRows = undefined;
   }
 
   get lastRow() {
@@ -8,10 +9,14 @@ export class Triangle {
   }
 
   get rows() {
-    let pascalRows = [[1]]
+    if (this.pascalRows) {
+      return this.pascalRows;
+    }
 
-    while (pascalRows.length < this.numOfRows) {
-      let previousRow = pascalRows[pascalRows.length - 1];
+    this.pascalRows = [[1]]
+
+    while (this.pascalRows.length < this.numOfRows) {
+      let previousRow = this.pascalRows[this.pascalRows.length - 1];
       let currentRow = [1];
 
       for (let i = 0; i < previousRow.length - 1; i++) {
@@ -19,9 +24,9 @@ export class Triangle {
       }
 
       currentRow.push(1);
-      pascalRows.push(currentRow);
+      this.pascalRows.push(currentRow);
     } 
 
-    return pascalRows;
+    return this.pascalRows;
   }
 }
